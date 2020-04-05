@@ -1,0 +1,28 @@
+server:
+  port: 8088
+  servlet:
+    context-path: /datahub/api/v1
+spring:
+  datasource:
+    #     数据源连接
+    #url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://10.61.1.92:5432/svcmgr} #开发环境
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://10.60.135.250:5432/testdb?useSSL=false} #开发环境
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    #     数据源驱动类名
+    driver-class-name: org.postgresql.Driver
+# 配置mybatis
+mybatis:
+  # 配置model所在的包
+  typeAliasesPackage: org.spring.springboot.domain
+  # 配置mapper的classpath
+  mapperLocations: classpath:mapper/*.xml
+
+# 配置日志信息
+logging:
+  path: /tmp/data/service/logs
+  config: classpath:logback-spring.xml
+  level:
+    root: info
+    ACCESS: info
+    org.spring.springboot.mapper: debug
